@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import environments from './configs/environments.config';
+import typeormConfig from './configs/typeorm.config';
 
 @Module({
   imports: [
@@ -9,6 +11,7 @@ import environments from './configs/environments.config';
       envFilePath: ['.env', '.env.development', '.env.production'],
       load: [environments], //
     }),
+    TypeOrmModule.forRootAsync(typeormConfig),
   ],
 })
 export class AppModule {}
