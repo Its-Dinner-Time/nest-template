@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import environments from './configs/environments';
+import environments from './configs/environments.config';
 
 @Module({
   imports: [
