@@ -23,8 +23,8 @@ const typeormConfig: TypeOrmModuleAsyncOptions = {
       username: database.username,
       password: database.password,
       database: database.database,
-      entities: ['src/entities/**/*.ts'],
-      subscribers: ['src/subscribers/**/*.ts'],
+      entities: ['src/**/*.entity.ts'],
+      subscribers: ['src/**/*.subscriber.ts'],
       synchronize: true,
     };
   },
