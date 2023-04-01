@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RouterModule } from '@nestjs/core';
 
 import environments from './configs/environments.config';
 import typeormConfig from './configs/typeorm.config';
+import routes, { RouteModules } from './routers';
 
 @Module({
   imports: [
@@ -12,6 +14,8 @@ import typeormConfig from './configs/typeorm.config';
       load: [environments], //
     }),
     TypeOrmModule.forRootAsync(typeormConfig),
+    RouterModule.register(routes),
+    ...RouteModules,
   ],
 })
 export class AppModule {}
