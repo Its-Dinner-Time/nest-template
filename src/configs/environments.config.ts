@@ -1,8 +1,8 @@
-export interface IEnvironments {
+export interface IEnvironmentConfigs {
   port: number;
 }
 
-export default (): IEnvironments => {
+export default (): IEnvironmentConfigs => {
   return {
     port: parseInt(process.env.PORT, 10) || 3000,
   };
