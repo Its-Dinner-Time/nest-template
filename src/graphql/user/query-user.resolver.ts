@@ -7,6 +7,7 @@ export class QueryUserResolver {
 
   @Query()
   async getUserAll() {
-    return this.readUserService.getAll();
+    const [users] = await this.readUserService.getAll();
+    return users;
   }
 }
