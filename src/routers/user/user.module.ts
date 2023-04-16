@@ -6,6 +6,7 @@ import { UserController } from './user.controller';
 import { UserRepository } from 'src/services/user/entity/user.repository';
 import { ReadUserService } from 'src/services/user/read-user.service';
 import { WriteUserService } from 'src/services/user/write-user.service';
+// import { QueryUserResolver } from './resolvers/query-user.resolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -13,6 +14,7 @@ import { WriteUserService } from 'src/services/user/write-user.service';
     UserRepository, //
     ReadUserService,
     WriteUserService,
+    // QueryUserResolver,
   ],
   controllers: [UserController],
 })

@@ -1,18 +1,17 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from '@nestjs/core';
 
-import environments from './configs/environments.config';
-import typeormConfig from './configs/typeorm.config';
 import routes, { RouteModules } from './routers';
+// import { GraphQLModule } from '@nestjs/graphql';
+// import { ApolloDriverConfig } from '@nestjs/apollo';
+import { environmentConfig, graphqlConfig, typeormConfig } from './configs';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      envFilePath: ['.env', '.env.development', '.env.production'],
-      load: [environments], //
-    }),
+    ConfigModule.forRoot(environmentConfig),
+    // GraphQLModule.forRootAsync<ApolloDriverConfig>(graphqlConfig),
     TypeOrmModule.forRootAsync(typeormConfig),
     RouterModule.register(routes),
     ...RouteModules,
